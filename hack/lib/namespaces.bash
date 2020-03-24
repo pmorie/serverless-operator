@@ -7,7 +7,7 @@ function create_namespaces {
       oc create ns "${ns}"
     fi
   done
-  logger.success "Namespaces has bean created: ${NAMESPACES[*]}"
+  logger.success "Namespaces has been created: ${NAMESPACES[*]}"
 }
 
 function delete_namespaces {

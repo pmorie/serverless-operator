@@ -34,6 +34,10 @@ else
   export IMAGE_KNATIVE_OPENSHIFT_INGRESS="registry.svc.ci.openshift.org/openshift/openshift-serverless-nightly:knative-openshift-ingress"
 fi
 
+echo "Using image repositories:"
+echo "  Knative Operator:  ${IMAGE_KNATIVE_OPERATOR}"
+echo "  OpenShift Ingress: ${IMAGE_KNATIVE_OPENSHIFT_INGRESS}"
+
 CRD=$(cat $(ls $CRD_DIR/*) | grep -v -- "---" | indent apiVersion)
 CSV=$(cat $(find $OLM_DIR -name '*version.yaml' | sort -n) | envsubst '$IMAGE_KNATIVE_OPERATOR $IMAGE_KNATIVE_OPENSHIFT_INGRESS' | indent apiVersion)
 PKG=$(cat $OLM_DIR/$NAME/*package.yaml | indent packageName)
